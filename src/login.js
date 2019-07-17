@@ -7,8 +7,11 @@ import axios from 'axios';
 import PropTypes from 'prop-types';
 
 class Login extends Component {
-    static contextTypes = {
-        router: PropTypes.object.isRequired
+    //propType是用来帮你检测参数类型是不是指定格式的
+    // contextTypes是用来检测上下文参数的
+    //注：不推荐用context
+    static  propTypes = {
+        history: PropTypes.object.isRequired
     }
 
     constructor(props) {
@@ -57,7 +60,6 @@ class Login extends Component {
             }
         });
     };
-
     render() {
         const {getFieldDecorator} = this.props.form;
         return (
@@ -89,7 +91,7 @@ class Login extends Component {
                             <Button type="primary" htmlType="submit" className="login-form-button">
                                 登录
                             </Button>
-                            <a href="" className='register'>还没有账号？立即注册</a>
+                            <a href="" className='register' onClick={()=>this.props.history.push('/register')}>还没有账号？立即注册</a>
                         </Form.Item>
                     </Form>
                 </div>
