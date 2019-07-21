@@ -24,6 +24,7 @@ class Login extends Component {
 
     //调用登录接口
     login() {
+        const that = this;
         axios.get('https://www.apiopen.top/login', {
             params: {
                 key: '26eafefc8e9e8593950f2d50c0e6f35a',
@@ -37,6 +38,7 @@ class Login extends Component {
                     message.error(response.data.msg);
                 } else {
                     message.success('登录成功！');
+                    that.props.history.push('/home')
                 }
             })
             .catch(function (error) {
@@ -95,7 +97,7 @@ class Login extends Component {
                         </Form.Item>
                     </Form>
                 </div>
-
+ 
             </div>
         );
     }
